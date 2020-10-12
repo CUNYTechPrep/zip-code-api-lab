@@ -1,4 +1,5 @@
 const express = require('express');
+const { byZip } = require('./zipData');
 const app = express();
 
 const zipdb = require('./zipData');
@@ -15,12 +16,12 @@ app.get('/', (req, res) => {
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+   res.json(zipdb.byZip[req.params.zipcode])
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+ res.json(zipdb.byCity[req.params.cityname])
 });
 
 
