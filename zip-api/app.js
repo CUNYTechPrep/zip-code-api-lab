@@ -1,29 +1,37 @@
-const express = require('express');
-const app = express();
+const express = require("express")
+const { byZip, byCity } = require("./zipData")
+const app = express()
 
-const zipdb = require('./zipData');
+const PORT = process.env.PORT || 8000
 
-const PORT = process.env.PORT || 8000;
+app.get("/", (req, res) => {
+    res.json({ test: "Yay" })
+})
 
+app.get("/zip/:zipcode", (req, res) => {
+    const { zipcode } = req.params
 
-// console.log(zipdb.byCity);
+    const result = byZip[zipcode]
 
+    if (!result) {
+        return res.sendStatus(404)
+    }
 
-app.get('/', (req, res) => {
-  res.json({test: 'Yay'});
-});
+    return res.json(result)
+})
 
+app.get("/city/:cityname", (req, res) => {
+    const { cityname } = req.params
 
-app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
-});
+    const result = byCity[cityname]
 
+    if (!result) {
+        return res.sendStatus(404)
+    }
 
-app.get('/city/:cityname', (req, res) => {
-  // fill in...
-});
-
+    return res.json(result)
+})
 
 app.listen(PORT, () => {
-  console.log(`zip-api is up and running on ${PORT}`);
-});
+    console.log(`zip-api is up and running on ${PORT}`)
+})
