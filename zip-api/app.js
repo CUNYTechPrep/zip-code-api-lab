@@ -3,24 +3,33 @@ const app = express();
 
 const zipdb = require('./zipData');
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 
 // console.log(zipdb.byCity);
-
+const byCity = zipdb.byCity;
+const byZip = zipdb.byZip;
 
 app.get('/', (req, res) => {
-  res.json({test: 'Yay'});
+  res.json({test: "Yay"});
 });
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  if(byZip[req.params.zipcode] == undefined)
+    res.json("Not Found");
+  else
+    res.json(byZip[req.params.zipcode]);
+ 
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  if(byCity[req.params.cityname] == undefined){
+    res.send("Not Found");
+  }
+  else
+    res.json(byCity[req.params.cityname]);
 });
 
 
