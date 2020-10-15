@@ -1,26 +1,35 @@
 const express = require('express');
 const app = express();
-
 const zipdb = require('./zipData');
 
 const PORT = process.env.PORT || 8000;
 
-
-// console.log(zipdb.byCity);
-
-
-app.get('/', (req, res) => {
-  res.json({test: 'Yay'});
-});
-
-
+//zip code api
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+
+  const zipcode = zipdb.byZip[parseInt(req.params.zipcode)];
+
+  if(zipcode != undefined){
+    res.json(zipcode);
+  }
+  else{
+    res.status(400).json({msg: `Zipcode ${zipcode} not found!`})
+  }
+  
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+
+  const cityname = zipdb.byCity[req.params.cityname.toUpperCase()];
+
+  if(cityname != undefined){
+    res.json(cityname);
+  }
+  else{
+    res.status(400).json({msg: `City ${cityname} not found!`})
+  }
+
 });
 
 
