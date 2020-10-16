@@ -21,7 +21,8 @@ app.get('/zip/:zipcode', (req, res) => {
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  const city = req.params.cityname;
+  res.json(zipdb.byCity[city]);
 });
 
 
