@@ -21,7 +21,7 @@ app.get('/zip/:zipcode', (req, res) => {
 
 
 app.get('/city/:cityname', (req, res) => {
-  const city = req.params.cityname;
+  const city = req.params.cityname.toUpperCase();
   res.json(zipdb.byCity[city]);
 });
 
