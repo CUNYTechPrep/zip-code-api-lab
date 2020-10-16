@@ -1,13 +1,8 @@
 const express = require('express');
 const app = express();
-
-const zipdb = require('./zipData');
+const zipApiClient = require('./client/zipApiClient');
 
 const PORT = process.env.PORT || 8000;
-
-
-// console.log(zipdb.byCity);
-
 
 app.get('/', (req, res) => {
   res.json({test: 'Yay'});
@@ -15,12 +10,21 @@ app.get('/', (req, res) => {
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  zipApiClient.getByZipCode(req.params.zipcode)
+      .then(response => {
+          res.send(response.data);
+      }).catch((err) =>{
+      res.status(err.response.status).send(err.response.data)
+  })
 });
 
-
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  zipApiClient.getByCityName(req.params.cityname)
+      .then(response => {
+        res.send(response.data);
+      }).catch((err) =>{
+      res.status(err.response.status).send(err.response.data)
+  })
 });
 
 
