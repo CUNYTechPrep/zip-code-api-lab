@@ -1,12 +1,10 @@
 const express = require('express');
+const { byZip, byCity } = require('./zipData');
 const app = express();
 
 const zipdb = require('./zipData');
 
 const PORT = process.env.PORT || 8000;
-
-
-// console.log(zipdb.byCity);
 
 
 app.get('/', (req, res) => {
@@ -15,12 +13,20 @@ app.get('/', (req, res) => {
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  const zip = req.params.zipcode;
+  if(byZip[zip] === undefined)
+    res.status(404).send('Not Found');
+  else
+    res.status(200).json(byZip[zip]);
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  const city = req.params.cityname;
+  if(byCity[city] === undefined)
+    res.status(404).send('Not found');
+  else
+    res.status(200).json(byCity[city]);
 });
 
 
