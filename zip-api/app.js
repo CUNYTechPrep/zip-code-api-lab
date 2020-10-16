@@ -1,5 +1,4 @@
 const express = require('express');
-const { byZip } = require('./zipData');
 const app = express();
 
 const zipdb = require('./zipData');
