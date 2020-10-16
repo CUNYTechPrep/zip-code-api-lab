@@ -15,12 +15,14 @@ app.get('/', (req, res) => {
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  const zip = req.params.zipcode;
+  res.json(zipdb.byZip[zip]);
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  const city = req.params.cityname.toUpperCase();
+  res.json(zipdb.byCity[city]);
 });
 
 
