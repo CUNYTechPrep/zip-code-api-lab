@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search</title>
+    <link rel="stylesheet" href="../public/css/style.css" type="text/css" />
+  </head>
+  <body style="margin: 0px;">
+      <header id="dashboard-header">
+        <h2>Search</h2>
+      </header>
+      <main style="text-align: center;">
+        <button onclick="myFunction('zip')" id="zip-code-btn" class="dashboard-btn">Zip Code Search</button>
+        <button onclick="myFunction('city')" id="city-btn" class="dashboard-btn">City Search</button>
+      </main>
+
+      <script>
+        function myFunction(path) {
+            window.location.href = `/${path}`;
+        }
+        </script>
+  </body>
+</html>
