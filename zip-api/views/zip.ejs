@@ -19,6 +19,12 @@
       </main>
 
       <script>
+          // If the user presses enter in the search textbox, perform a search.
+          document.getElementById('zipcode-input').onkeyup = function (e) {
+          if (e.keyCode === 13) {
+            submitSearch();
+          }
+        };
         async function submitSearch() {
             let zipCode = document.getElementById("zipcode-input").value;
             let html = [];
