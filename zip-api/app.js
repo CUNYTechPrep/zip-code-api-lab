@@ -1,12 +1,10 @@
 const express = require('express');
+const { byZip, byCity } = require('./zipData');
 const app = express();
 
 const zipdb = require('./zipData');
 
-const PORT = process.env.PORT || 8000;
-
-
-// console.log(zipdb.byCity);
+const PORT = process.env.PORT || 3000;
 
 
 app.get('/', (req, res) => {
@@ -15,12 +13,17 @@ app.get('/', (req, res) => {
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  const zip = req.params.zipcode;
+  const results = byZip[zip];
+  res.send(results);
 });
 
 
 app.get('/city/:cityname', (req, res) => {
   // fill in...
+  const city = req.params.cityname; 
+  const results = byCity[city];
+  res.send(results);
 });
 
 
