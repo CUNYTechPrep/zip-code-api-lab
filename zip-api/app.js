@@ -10,20 +10,34 @@ const PORT = process.env.PORT || 8000;
 
 
 app.get('/', (req, res) => {
-  res.json({test: 'Yay'});
+    res.json({test: 'Yay'});
 });
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+
+    let zipcode = zipdb.byZip[req.params.zipcode]
+
+    if(zipcode !== undefined){
+        res.json(zipcode)
+    }
+    else{
+        res.sendStatus(404);
+    }
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
-});
+    let cityname = zipdb.byCity[req.params.cityname]
+
+    if(cityname !== undefined){
+        res.json(cityname)
+    }
+    else{
+        res.sendStatus(404);
+    }});
 
 
 app.listen(PORT, () => {
-  console.log(`zip-api is up and running on ${PORT}`);
+    console.log(`zip-api is up and running on ${PORT}`);
 });
