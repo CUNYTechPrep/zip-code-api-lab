@@ -1,0 +1,38 @@
+#dashboard-header{
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    padding: 8px;
+    margin-bottom: 20px;
+}
+
+.dashboard-btn{
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #000;
+    padding: 12px;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+.simple-btn{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #000;
+    padding: 12px;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#backarrow{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: 26px;
+    top: 26px;
+    cursor: pointer;
+}

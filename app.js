@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const zipApiClient = require('./client/zipApiClient');
+const zipApiClient = require('./zip-api/client/zipApiClient');
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

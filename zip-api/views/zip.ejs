@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %> Search</title>
+    <link rel="stylesheet" href="../public/css/style.css" type="text/css" />
+  </head>
+  <body style="margin: 0px;">
+      <header id="dashboard-header">
+        <img src="../public/back.svg" onclick="goback()" alt="back" id="backarrow">
+        <h2><%= title %> Search</h2>
+      </header>
+      <main style="text-align: center;max-width: 400px;margin: 0px auto;">
+          <div>
+            <input placeholder="Enter zip code" type="text" maxlength="5" id="zipcode-input" style="font-size: 16px;padding: 8px;"/>
+            <button onclick="submitSearch('city')" id="city-btn" class="simple-btn">Search</button>
+          </div>
+          <div id="list-card"></div>
+      </main>
+
+      <script>
+          // If the user presses enter in the search textbox, perform a search.
+          document.getElementById('zipcode-input').onkeyup = function (e) {
+          if (e.keyCode === 13) {
+            submitSearch();
+          }
+        };
+        async function submitSearch() {
+            let zipCode = document.getElementById("zipcode-input").value;
+            let html = [];
+            if(zipCode!==""){
+              try {
+                let response = await fetch(`http://localhost:8000/zip/${zipCode}`);
+                let json = await response.json();
+                console.log(json,"json");
+                for (var i = 0; i < json.length; i++) {
+                    let data = json[i];
+                    let card=`<div style="border: 1px solid #ccc;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);transition: 0.3s;border-radius: 4px;margin: 10px;">
+                        <div style="padding: 6px;background-color: #eee;font-size: 18px;">${data.LocationText}</div>  
+                        <div style="display: flex;justify-content: center;">
+                          <ul>
+                              <li style="text-align: left;">State: ${data.State}</li>
+                              <li style="text-align: left;">Location: (${data.Lat}, ${data.Long})</li>
+                              <li style="text-align: left;">Population (estimated): ${data.EstimatedPopulation}</li>
+                              <li style="text-align: left;">total Wages: ${data.TotalWages}</li>
+                          </ul>
+                          </div>  
+                      </div>`
+                    html.push(card);
+            }
+            document.getElementById('list-card').innerHTML = html.join('');
+              } catch (error) {
+                console.log(error,"error");
+              }
+            }
+        }
+
+        function goback(){
+          window.location.href = window.location.origin;
+        }
+        </script>
+  </body>
+</html>
