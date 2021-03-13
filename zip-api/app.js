@@ -16,12 +16,12 @@ app.get('/', (req, res) => {
 
 app.get('/zip/:zipcode', (req, res) => {
   let zip = req.params.zipcode;
-  let results = zipdb.byZip(zip);
+  let results = zipdb.byZip[zip];
 
   if(results){
     res.status(200).json(results);
   } else {
-    res.status(404)
+    res.status(404).send("Not Found")
   }
 });
 
