@@ -16,9 +16,9 @@ app.get('/', (req, res) => {
 
 app.get('/zip/:zipcode', (req, res) => {
   let zip = req.params.zipcode;
-  let results = zipdb.byZip[zip];
+  let results = zipdb.byZip[zip]; //gets the results from the db
 
-  if(results){
+  if(results){  //outputs results
     res.status(200).json(results);
   } else {
     res.status(404).send("Not Found")
@@ -28,9 +28,9 @@ app.get('/zip/:zipcode', (req, res) => {
 
 app.get('/city/:cityname', (req, res) => {
   let city = req.params.cityname;
-  let results = zipdb.byCity[city];
+  let results = zipdb.byCity[city]; //gets results from db
 
-  if(results){
+  if(results){  //outputs the results
     res.status(200).json(results);
   } else {
     res.status(404).send("Not Found");
