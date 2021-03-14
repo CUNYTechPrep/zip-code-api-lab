@@ -4,9 +4,9 @@
   "description": "Simple API backend for CTP lecture.",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
-  "author": "Edgardo Molina",
+  "author": "Asma Awad",
   "license": "ISC",
   "dependencies": {
     "csv-parse": "^4.12.0",

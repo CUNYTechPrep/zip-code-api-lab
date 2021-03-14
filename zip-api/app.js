@@ -5,22 +5,22 @@ const zipdb = require('./zipData');
 
 const PORT = process.env.PORT || 8000;
 
-
-// console.log(zipdb.byCity);
-
-
 app.get('/', (req, res) => {
   res.json({test: 'Yay'});
 });
 
 
-app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+app.get('/zip/:zipcode', (req, res) => { 
+  const zipcode = req.params.zipcode
+  const zipData = zipdb.byZip[zipcode]
+  res.send(zipData ? zipData : 'Not found')
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  const cityname = req.params.cityname
+  const cityData = zipdb.byCity[cityname]
+  res.send(cityData ? cityData : 'Not found')
 });
 
 
