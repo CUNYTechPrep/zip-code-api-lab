@@ -15,13 +15,27 @@ app.get('/', (req, res) => {
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
-});
+  const zipcode = req.params.zipcode;
+  const data = zipdb["byZip"][zipcode];
 
+  if (data) {
+    res.status(200).json(data);
+  } else {
+    res.status(404).send("Not Found");
+  }
+});
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  const cityname = req.params.cityname;
+  const data = zipdb["byCity"][cityname];
+
+  if (data) {
+    res.status(200).json(data);
+  } else {
+    res.status(404).send("Not Found");
+  }
 });
+
 
 
 app.listen(PORT, () => {
