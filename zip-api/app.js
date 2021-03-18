@@ -15,12 +15,24 @@ app.get('/', (req, res) => {
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  res.header('Access-Control-Allow-Origin', '*');
+  const zipCode = req.params.zipcode;
+  if (zipdb.byZip[zipCode] === undefined) {
+    res.sendStatus(404);
+  } else {
+    res.json( zipdb.byZip[zipCode] );
+  }
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  res.header('Access-Control-Allow-Origin', '*');
+  const cityName = req.params.cityname;
+  if (zipdb.byCity[cityName] === undefined) {
+    res.sendStatus(404);
+  } else {
+    res.json( zipdb.byCity[cityName] );
+  }
 });
 
 
