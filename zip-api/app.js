@@ -6,8 +6,8 @@ const zipdb = require('./zipData');
 const PORT = process.env.PORT || 8000;
 
 
-// console.log(zipdb.byCity);
-
+ // console.log(zipdb.byCity);
+ 
 
 app.get('/', (req, res) => {
   res.json({test: 'Yay'});
@@ -15,12 +15,22 @@ app.get('/', (req, res) => {
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  const zip = req.params.zipcode;
+  let results = zipdb.byZip[zip];
+  if (results == undefined){
+    results = "Error 404: Zip Code not found.";
+  }
+  res.json(results);
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  const city = req.params.cityname;
+  let results = zipdb.byCity[city];
+  if (results == undefined){
+    results = "Error 404: City not found.";
+  }
+  res.json(results);
 });
 
 
