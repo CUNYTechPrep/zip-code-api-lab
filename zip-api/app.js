@@ -20,7 +20,7 @@ app.get('/zip/:zipcode', (req, res) => {
   if (zipdb.byZip[zipCode] === undefined) {
     res.sendStatus(404);
   } else {
-    res.json( Object.values(zipdb.byZip[zipCode]) );
+    res.json( zipdb.byZip[zipCode] );
   }
 });
 
@@ -31,7 +31,7 @@ app.get('/city/:cityname', (req, res) => {
   if (zipdb.byCity[cityName] === undefined) {
     res.sendStatus(404);
   } else {
-    res.json( Object.values(zipdb.byCity[cityName]) );
+    res.json( zipdb.byCity[cityName] );
   }
 });
 
