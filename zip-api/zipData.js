@@ -8,6 +8,7 @@ const records = parse(data, { columns: true });
 const byZip = {};
 const byCity = {};
 
+
 records.forEach((rec) => {
   if(byZip[rec.Zipcode] === undefined) {
     byZip[rec.Zipcode] = [];
@@ -21,4 +22,4 @@ records.forEach((rec) => {
 });
 
 
-module.exports = { byZip, byCity };
+module.exports = { byZip, byCity, records };
