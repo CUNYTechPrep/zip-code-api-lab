@@ -15,12 +15,27 @@ app.get('/', (req, res) => {
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  let zip = req.params.zipcode;
+  let results = zipdb.byZip[zip]; //gets the results from the db
+
+  if(results){  //outputs results
+    res.status(200).json(results);
+  } else {
+    res.status(404).send("Not Found")
+  }
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  let city = req.params.cityname;
+  let results = zipdb.byCity[city]; //gets results from db
+
+  if(results){  //outputs the results
+    res.status(200).json(results);
+  } else {
+    res.status(404).send("Not Found");
+  }
+
 });
 
 
