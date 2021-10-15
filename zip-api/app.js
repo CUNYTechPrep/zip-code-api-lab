@@ -15,12 +15,23 @@ app.get('/', (req, res) => {
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  const zipcode = req.params.zipcode;
+  if(zipcode===undefined){
+    res.status(404).send("not found")
+  } else{
+    res.send("this is the zipcode route handler")
+  }
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  const cityname = req.params.cityname;
+
+  if(cityname===undefined){
+    res.status(404).send("not found")
+  }else{
+    res.send("this is the city name route handler")
+  }
 });
 
 
