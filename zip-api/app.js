@@ -10,17 +10,37 @@ const PORT = process.env.PORT || 8000;
 
 
 app.get('/', (req, res) => {
-  res.json({test: 'Yay'});
+  res.send('ZIP API LAB, PLEASE SPECIFY WHICH API YOU WOULD LIKE TO ACCESS IN THE URL. i.e ZIP or CITY')
 });
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  const zipcode  = req.params.zipcode
+  if(zipcode.length === 5 && (zipcode.match(/^[0-9]+$/) != null)){
+    const results  = zipdb.byZip[zipcode]
+    if(results){
+      res.json(results)
+    }else {
+      res.status(404).send("No Results!")
+    }
+  } else {
+    res.status(404).send("invalid Zip!")
+  }
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  const cityname = (req.params.cityname).toUpperCase()
+  if(cityname.length >= 3){
+    const results = zipdb.byCity[cityname]
+    if(results){
+      res.json(results)
+    }else {
+      res.status(404).send("No Results!")
+    }
+  }else {
+    res.status(404).send("Try a longer text!")
+  }
 });
 
 
