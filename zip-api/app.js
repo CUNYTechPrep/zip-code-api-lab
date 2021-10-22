@@ -5,22 +5,34 @@ const zipdb = require('./zipData');
 
 const PORT = process.env.PORT || 8000;
 
-
-// console.log(zipdb.byCity);
-
-
 app.get('/', (req, res) => {
   res.json({test: 'Yay'});
 });
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  let zipcode = req.params.zipcode;
+
+  if(zipcode in zipdb.byZip){
+    res.json(
+      zipdb.byZip[zipcode]
+    )
+  } else {
+    res.status(404).send("Error. That zipcode was not found.")
+  }
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  let cityname = req.params.cityname.toUpperCase();
+
+  if(cityname in zipdb.byCity){
+    res.json(
+      zipdb.byCity[cityname]
+    )
+  } else {
+    res.status(404).send("Error. That city was not found.")
+  }
 });
 
 
