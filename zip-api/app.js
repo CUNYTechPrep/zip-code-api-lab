@@ -7,20 +7,25 @@ const PORT = process.env.PORT || 8000;
 
 
 // console.log(zipdb.byCity);
-// Trial
+
 
 app.get('/', (req, res) => {
+  
   res.json({test: 'Yay'});
 });
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  // Accessing the byZip object w/ params of the get request with req.params
+  const requestCity = zipdb.byZip[req.params.zipcode];
+  res.json(requestCity);
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  const requestZip = zipdb.byCity[req.params.cityname];
+  res.json(requestZip);
+
 });
 
 
