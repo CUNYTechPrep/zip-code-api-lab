@@ -15,12 +15,28 @@ app.get('/', (req, res) => {
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  let zipcode = req.params.zipcode;
+
+  if(zipcode in zipdb.byZip){
+    res.json(
+      zipdb.byZip[zipcode]
+    )
+  } else {
+    res.status(404).send(`Error: ${ zipcode } was not found. Please enter a different zipcode.`)
+  }
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  let cityname = req.params.cityname.toUpperCase();
+
+  if(cityname in zipdb.byCity){
+    res.json(
+      zipdb.byCity[cityname]
+    )
+  } else {
+    res.status(404).send(`Error: ${ cityname } was not found. Please enter a different city.`)
+  }
 });
 
 
