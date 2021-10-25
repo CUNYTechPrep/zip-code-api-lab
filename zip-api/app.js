@@ -16,15 +16,27 @@ app.get('/', (req, res) => {
 
 app.get('/zip/:zipcode', (req, res) => {
   // fill in...
-  let zip = req.params.zipcode
-  res.json(zipdb.byZip[zip]);
+  let zip = req.params.zipcode;
+  let response = zipdb.byZip[zip];
+
+  if(response === undefined){
+    res.status(404).send('ERROR 404, ZIPCODE NOT FOUND');
+  }else{
+    res.json(response);
+  }
 });
 
 
 app.get('/city/:cityname', (req, res) => {
   // fill in...
   let city = req.params.cityname;
-  res.json(zipdb.byCity[city]);
+  let response = zipdb.byCity[city];
+  if(response === undefined){
+    res.status(404).send('ERROR 404, CITY NOT FOUND');
+  }else{
+    res.json(response);
+  }
+  
 });
 
 
