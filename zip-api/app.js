@@ -10,17 +10,33 @@ const PORT = process.env.PORT || 8000;
 
 
 app.get('/', (req, res) => {
-  res.json({test: 'Yay'});
+  res.json({ test: 'Yay' });
 });
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  const {zipcode} = req.params;
+
+  for(property in zipdb.byZip){
+    if(zipcode === property){
+      res.status(200).send(zipdb.byZip[property]);
+    }
+  }
+  //automatically send not found 
+  res.sendStatus(404);
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  const {cityname} = req.params;
+
+  for(property in zipdb.byCity){
+    if(cityname === property){
+      res.status(200).send(zipdb.byCity[property]);
+    }
+  }
+  //automatically send not found 
+  res.sendStatus(404)
 });
 
 

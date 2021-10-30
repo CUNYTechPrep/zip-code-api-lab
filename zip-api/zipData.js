@@ -20,5 +20,4 @@ records.forEach((rec) => {
   byCity[rec.City].push(rec.Zipcode);
 });
 
-
 module.exports = { byZip, byCity };
