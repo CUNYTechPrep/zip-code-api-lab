@@ -4,6 +4,7 @@
   "description": "Simple API backend for CTP lecture.",
   "main": "app.js",
   "scripts": {
+    "//": "will run this command as soon as the app starts bruh",
     "start": "node app.js"
   },
   "author": "Edgardo Molina",
