@@ -1,6 +1,6 @@
 # Zip Code API  🔥
 
-## Project 01: Build the Zip API service
+## the Zip API service
 
 The Zip Code API , when called, returns a json object with information regarding that particual zipcode or city.
 
