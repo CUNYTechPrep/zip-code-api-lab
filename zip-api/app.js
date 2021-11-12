@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
   let zip = req.params.zipcode;
   let response = zipdb.byZip[zip];
 
@@ -28,7 +27,6 @@ app.get('/zip/:zipcode', (req, res) => {
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
   let city = req.params.cityname;
   let response = zipdb.byCity[city];
   if(response === undefined){

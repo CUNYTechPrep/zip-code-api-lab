@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon app.js"
   },
-  "author": "Edgardo Molina",
+  "author": "Mohammed Chowdhurys",
   "license": "ISC",
   "dependencies": {
     "csv-parse": "^4.12.0",
