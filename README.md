@@ -1,16 +1,46 @@
-# Zip Code API Lab 🔥
-
-## Project 00: Hello World in Express.js
-
-Follow instructions in class to create an npm project from scratch, and make a simple hello world web app using Express.js.
-
-> Note: you do not have to hand this in.
+# Zip Code API  🔥
 
 ## Project 01: Build the Zip API service
 
-This week we will build the Zip code API that we used last week in-class.
+The Zip Code API , when called, returns a json object with information regarding that particual zipcode or city.
 
-> Note: The documentation for the API can be found here: https://github.com/CUNYTechPrep/zip-code-react-lab#the-zip-and-city-search-api-documentation-ctp-zip-api
+Ex. Doing
+
+http://ctp-zip-api.herokuapp.com/zip/42069 
+
+or if you want to run locally after cloning this repo
+
+http://localhost:8000/zip/42069
+
+will output :
+```
+[{
+"RecordNumber":"23208",
+"Zipcode":"42069",
+"ZipCodeType":"STANDARD",
+"City":"MELBER",
+"State":"KY",
+"LocationType":"PRIMARY",
+"Lat":"36.91",
+"Long":"-88.75",
+"Xaxis":"0.01",
+"Yaxis":"-0.79",
+"Zaxis":"0.60",
+"WorldRegion":"NA",
+"Country":"US",
+"LocationText":"Melber, KY",
+"Location":"NA-US-KY-MELBER",
+"Decommisioned":"false",
+"TaxReturnsFiled":"421",
+"EstimatedPopulation":"807",
+"TotalWages":"10888387",
+"Notes":""
+}]
+```
+
+
+> Note: http://ctp-zip-api.herokuapp.com/ is the URL for the API to be used in your app. 
+> To run the program on your local device, clone this repo and : 
 
 - `cd zip-api`
 - `npm install`
