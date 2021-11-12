@@ -1,4 +1,4 @@
-# Zip Code API Lab
+# Zip Code API Lab 🔥
 
 ## Project 00: Hello World in Express.js
 
