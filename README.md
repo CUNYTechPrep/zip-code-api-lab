@@ -2,7 +2,7 @@
 
 ## the Zip API service
 
-The Zip Code API , when called, returns a json object with information regarding that particual zipcode or city.
+The Zip Code API , when called, returns a json object with information regarding the specified zipcode or city.
 
 ![Demo](https://i.imgur.com/R9qOpqR.gif)
 
