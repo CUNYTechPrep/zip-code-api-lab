@@ -15,12 +15,22 @@ app.get('/', (req, res) => {
 
 
 app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+  //extract route parameter | zipCode : string
+  const zipCode = req.params.zipcode;
+  //access value through byZip object through zipCode key
+  let result = zipdb.byZip[zipCode];
+  //return JSON data
+  res.json(result);
 });
 
 
 app.get('/city/:cityname', (req, res) => {
-  // fill in...
+  //extract route param.
+  const cityName = req.params.cityname;
+  //access data associated with key
+  let result  = zipdb.byCity[cityName];
+  //return JSON data
+  res.json(result);
 });
 
 
