@@ -14,15 +14,15 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/zip/:zipcode', (req, res) => {
-  // fill in...
+app.get("/zip/:zipcode", (req, res) => {
+  const zipCode = req.params.zipcode;
+  res.json(zipdb.byZip[zipCode]);
 });
 
-
-app.get('/city/:cityname', (req, res) => {
-  // fill in...
+app.get("/city/:cityname", (req, res) => {
+  const cityName = req.params.cityname;
+  res.json(zipdb.byCity[cityName]);
 });
-
 
 app.listen(PORT, () => {
   console.log(`zip-api is up and running on ${PORT}`);
